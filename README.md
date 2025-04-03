@@ -38,5 +38,5 @@ https://markfontenot.net/teaching/ds4300/25s-ds4300/
 StackOverFlow for general code suggestions
 
 OpenSource AI models including deepseek, OpenAI, Perplexity, ChatGPT
-Uses include greater clarification on subjects, he debugging, and for assistance when it comes to
+Uses include greater clarification on subjects, help debugging, and for assistance when it comes to
 preprocessing.
