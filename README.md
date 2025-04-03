@@ -6,29 +6,35 @@ This repository implements Llama and DeepSeek to create a custom LLM using our t
 
 # Installation
 
-Ensure you are using Python 3.11. You can check this using the following command:
+- Ensure you are using Python 3.11. You can check this using the following command:
 python --version
-Ensure you have Ollama, Docker, Redis, Llama3.2 and DeepSeek DeepSeek-r1:1.5b downloaded.
+- Ensure you have downloaded Ollama, Docker, Redis, Llama3.2 and DeepSeek DeepSeek-r1:1.5b.
 
 # Implementation
 
 ## Step 1: Preprocessing the data
-To begin, make sure you have DS4300NotesTXT downloaded in your directory of choice. Then, head to preprocess1.py. This code will save a new folder called "processed" to your directory of choice. In preprocces1.py, change the varaible "INPUT_DIR" to your directory that contains the DS4300NotesTXT folder. Change the "OUTPUT_DIR" variable to the your directory of choice, but make sure the folder name is still named "processed". Run the code.
+To begin, make sure you have DS4300NotesTXT downloaded in your directory of choice. Then, head to preprocess.py. This code will save a new folder called "processed" to your directory of choice. In preprocces.py, change the variable "INPUT_DIR" to your directory that contains the downloaded DS4300NotesTXT folder. Change the "OUTPUT_DIR" variable to your directory of choice, but make sure the folder name is still named "processed". Run the code.
 
 ## Step 2: Ingesting the Data
 
-After preprocessing the data, head to compare.py. This python file ingests documents, generates embeddings using a pre-trained language model, and index/query them using three different vector search engines. Update the folder path to your chunk and overlap size of choosing (Ex: ./backend/processed/___). Our team chose 500 -- 50, so the folder path would look like this "./backend/processed/500 -- 50. At this point, you should open docker and run a redis stack. Update the port number on this line as needed: 
+After preprocessing the data, head to compare.py. This Python file ingests documents, generates embeddings using a pre-trained language model, and indexes/queries them using three different vector search engines. Update the "folder_path" variable to the pathway of your desired preprocessed dataset:
+- For example, if you would like to ingest data in chunks of 500 terms with an overlap of 50, your folder path would resemble this: /path/to/project/preprocess/500 -- 50
+Additionally, change the "file_pattern" variable to match your chunk/overlap size selection:
+- For example, if you would like to ingest data in chunks of 500 terms with an overlap of 50, your file pattern would resemble this: os.path.join(folder_path, "*_chunk_500_overlap_50.txt")
+- Simply change the numbers "500" and "50" if you would like to use a different chunk or overlap size
+
+At this point, you should open Docker and run a Redis stack. Update the port number on this line as needed: 
 redis_client = redis.Redis(host='localhost', port=6383)
 
 Now, run compare.py.
 
 ## Step 3: Running main.py
 
-Main.py retrieves text passages from a Redis-based vector index and then use those passages to build a context-specific prompt for a local language model. Update the the port number on this line as needed with the necessary port number: 
+main.py retrieves text passages from a Redis-based vector index and then uses those passages to build a context-specific prompt for a local language model. Update the port number on this line as needed with the necessary port number: 
 
 redis_client = redis.Redis(host='localhost', port=6383)
 
-Run main.py. The terminal should prompt you to enter a query. You can now query the model for anything related to DS4300. 
+Run main.py. The terminal should prompt you to enter a query. You can now query the model for anything related to DS4300 conten. 
 
 
 # Citations
