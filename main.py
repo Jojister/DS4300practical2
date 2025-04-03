@@ -1,4 +1,5 @@
 import os
+import time
 import subprocess
 import redis
 import numpy as np
@@ -74,6 +75,8 @@ def main():
         user_query = input("Enter your query (or 'exit' to quit): ")
         if user_query.strip().lower() == "exit":
             break
+
+        start_time = time.time()    # start timer   
         
         top_docs = retrieve_top_k_from_redis(user_query, k=3)
         
@@ -90,12 +93,17 @@ def main():
         
         response_deepseek = generate_response_with_ollama(deepseek_model_name, prompt)
         response_llama = generate_response_with_ollama(llama_model_name, prompt)
+
+        end_time = time.time()  # end timeer
+        elapsed_time = end_time - start_time
         
         # Only show the final outputs
         print("\n=== Final Output ===")
         print("DeepSeek-r1:1.5b:", response_deepseek if response_deepseek else "[No output]")
         print("Llama3.2:", response_llama if response_llama else "[No output]")
         print("\n")
+
+        print(f"\n[INFO] Total time taken: {elapsed_time:.2f} seconds\n")
     
 if __name__ == "__main__":
     main()
