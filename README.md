@@ -2,7 +2,7 @@
 
 # Overview
 
-This repository implements Llama and DeepSeek to create a custom LLM using our team's notes for DS4300 as data.
+This repository implements Llama and DeepSeek to create a custom LLM using our team's notes for DS4300 as data. There are 4 python files in this repository: preprocess.py, compare.py, main.py, and model.py. The 3 python files that are necessary to run are preprocess.py, compare.py, and main.py. Model.py was used to compare embedding models with test data.
 
 # Installation
 
