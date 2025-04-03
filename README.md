@@ -21,7 +21,7 @@ After preprocessing the data, head to compare.py. This Python file ingests docum
 - For example, if you would like to ingest data in chunks of 500 terms with an overlap of 50, your folder path would resemble this: /path/to/project/preprocess/500 -- 50
 Additionally, change the "file_pattern" variable to match your chunk/overlap size selection:
 - For example, if you would like to ingest data in chunks of 500 terms with an overlap of 50, your file pattern would resemble this: os.path.join(folder_path, "*_chunk_500_overlap_50.txt")
-* Simply change the numbers "500" and "50" if you would like to use a different chunk or overlap size
+  - Simply change the numbers "500" and "50" if you would like to use a different chunk or overlap size
 
 At this point, you should open Docker and run a Redis stack. Update the port number on this line as needed: 
 redis_client = redis.Redis(host='localhost', port=6383)
