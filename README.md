@@ -13,7 +13,7 @@ Ensure you have Ollama, Docker, Redis, Llama3.2 and DeepSeek DeepSeek-r1:1.5b do
 # Implementation
 
 ## Step 1: Preprocessing the data
-To begin, make sure you have DS4300NotesTXT downloaded in your directory of choice. Then, head to preprocess1.py. This code will save a new folder called "processed" to your directory of choice. In preprocces1.py, change the varaible "INPUT_DIR" to your directory that contains the DS4300NotesTXT folder. Change the "OUTPUT_DIR" variable to the your directory of choice, but make sure the folder name is still named "processed". Run the code.
+To begin, make sure you have DS4300NotesTXT downloaded in your directory of choice. Then, head to preprocess.py. This code will save a new folder called "processed" to your directory of choice. In preprocces.py, change the varaible "INPUT_DIR" to your directory that contains the DS4300NotesTXT folder. Change the "OUTPUT_DIR" variable to the your directory of choice, but make sure the folder name is still named "processed". Run the code.
 
 ## Step 2: Ingesting the Data
 
